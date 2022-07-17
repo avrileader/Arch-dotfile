@@ -1,0 +1,103 @@
+{
+    "height": 20,
+    "width": 1920,
+    "modules-left": [
+	"custom/arch",
+        "wlr/taskbar",
+        "custom/right"
+        ],
+    "modules-center": [
+        "custom/left",
+        "clock",
+        "custom/right"
+    ],
+    "modules-right": [
+        "custom/left",
+        "network",
+        "pulseaudio",
+        "backlight",
+	    "battery",
+        "tray"
+    ],
+    "tray": {
+       "icon-size": 18,
+       "spacing": 10
+    },
+    "backlight": {
+        "device": "amd_backlight",
+	    "format": "{percent}% {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "clock": {
+        "interval": 1,
+        "timezone": "Asia/Shanghai",
+        "format": "{:%A %H:%M:%S %Y-%m-%d}"
+	},
+    "temperature": {
+	"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+	"critical-threshold": 90,
+	"interval": 5,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+                "", // Icon: temperature-quarter
+                "", // Icon: temperature-half
+                "" // Icon: temperature-three-quarters
+		]
+	},
+    "battery": {
+	"interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        //"format-alt": "{time} {icon}",
+        "format-icons": [" ", " ", " ", " ", " "]
+	},
+    "network": {
+        "format-wifi": "{essid}({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname}(No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}:{ipaddr}/{cidr}",
+	    "tooltip": false
+	},
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "0% ",
+        "format-icons": {
+        "default": ["",""]
+	    },
+//        "on-click": "pavucontrol",
+        "tooltip": false
+	},
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 12,
+        "icon-theme": "Papirus-Dark-Custom",
+        "tooltip-format": "{title}",
+        "on-click": "minimize-raise",
+        "on-click-middle": "close"
+	},
+    "custom/left": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/left2": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/right": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/right2": {
+        "format": "",
+        "tooltip": false
+    }
+}

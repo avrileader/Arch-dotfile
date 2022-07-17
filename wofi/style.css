@@ -1,0 +1,69 @@
+@define-color grey rgba(100, 100, 100, 1);
+@define-color yellow #00ccff;
+@define-color darkgrey rgba(10, 10, 10, 1);
+@define-color transparent rgba(0, 0, 0, 0);
+
+* {
+  border: none;
+}
+
+window {
+  background-color: @grey;
+  font-size: 1.5em;
+  /* font: {{ font }}; */
+}
+
+#input {
+  margin: 10px 10px 10px 10px;
+  border-bottom: 2px solid @yellow;
+  border-radius: 0px;
+  background-color: white;
+}
+
+#inner-box {
+  margin: 10px 10px 10px 10px;
+  border-top: 2px solid @transparent;
+  color: white;
+  background-color: @transparent;
+}
+
+#expander .entry {
+  margin-left: -10px;
+}
+
+#img {
+  margin: 5px 5px 5px 5px;
+}
+
+#outer-box {
+  margin: 0px;
+  border: 0px solid;
+  background-color: @transparent;
+}
+
+#scroll {
+  margin: 0px;
+  border: 0px solid;
+  background-color: @transparent;
+}
+
+#entry{
+  padding: 1px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin: 0px;
+}
+
+#entry:selected{
+  background-color: @yellow;
+  color: @darkgrey;
+  outline: 0px;
+  border-radius: 0px;
+}
+
+#text:selected{
+  background-color: @yellow;
+  color: @darkgrey;
+  outline: 0px;
+  border-radius: 0px;
+}
