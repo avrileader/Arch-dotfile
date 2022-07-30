@@ -1,18 +1,14 @@
 {
-    "height": 20,
+    "height": 24,
     "width": 1920,
     "modules-left": [
-	"custom/arch",
-        "wlr/taskbar",
-        "custom/right"
+	"custom/Arch",
+        "wlr/taskbar"
         ],
     "modules-center": [
-        "custom/left",
-        "clock",
-        "custom/right"
+        "clock"
     ],
     "modules-right": [
-        "custom/left",
         "network",
         "pulseaudio",
         "backlight",
@@ -31,7 +27,7 @@
     "clock": {
         "interval": 1,
         "timezone": "Asia/Shanghai",
-        "format": "{:%A %H:%M:%S %Y-%m-%d}"
+        "format": "{:%Y-%m-%d %H:%M:%S %A}"
 	},
     "temperature": {
 	"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -79,23 +75,9 @@
         "on-click": "minimize-raise",
         "on-click-middle": "close"
 	},
-    "custom/left": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/left2": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/right": {
-        "format": "",
-        "tooltip": false
-    },
-
-    "custom/right2": {
-        "format": "",
-        "tooltip": false
-    }
+    "custom/Arch": {
+        "format": "",
+        "tooltip": false,
+	"on-click": "wofi"
+	}
 }
