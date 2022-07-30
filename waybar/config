@@ -53,7 +53,6 @@
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        //"format-alt": "{time} {icon}",
         "format-icons": [" ", " ", " ", " ", " "]
 	},
     "network": {
@@ -70,7 +69,6 @@
         "format-icons": {
         "default": ["",""]
 	    },
-//        "on-click": "pavucontrol",
         "tooltip": false
 	},
     "wlr/taskbar": {
