@@ -1,6 +1,6 @@
 *{
     font-family: UbuntuMono Nerd Font;
-    font-size: 20px;
+    font-size: 22px;
     min-height: 0;
     border-radius: 0;
 }
@@ -28,7 +28,7 @@ window#waybar {
     border-bottom: 3px solid #9933cc;
 }
 #taskbar button.active{
-    border-bottom: 3px solid #4EEE94;
+    border-bottom: 3px solid #0033ff;
 }
 #custom-Arch {
     font-size: 20px;
