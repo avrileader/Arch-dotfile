@@ -1,10 +1,4 @@
-# Just only me
-## 没啥用
-```bash
-systemctl stop reflector.service
-timedatectl set-ntp true
-timedatectl status
-```
+# Archlinux 安装记录
 ## 格式化硬盘
 ```bash
 mkfs.ext4 /dev/nvme0n1p2
@@ -73,11 +67,14 @@ exit
 umount -R  /mnt
 reboot  
 ```
-## 安装yay助手
+## 安装yay助手和添加Archlinuxcn源
 ```bash
 sudo nano /etc/pacman.conf
 wget https://arch.moichi.cn/res/yay-bin.pkg.tar.zst
 sudo pacman -U yay-bin.pkg.tar.zst
+sudo /etc/pacman.conf
+[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
 ## 安装wayfire
 ```bash
@@ -93,13 +90,19 @@ yay -S wcm-git wayfire-plugins-extra-git
 ```
 ## yay安装常用软件
 ```bash
-yay -Sy obs-studio wlrobs-hg microsoft-edge-stable-bin mpv greetd 
+yay -Sy obs-studio wlrobs-hg microsoft-edge-stable-bin mpv greetd nerd-fonts-hack fuse #fuse是Joplin必备
 ```
-## 安装ZSH和Powerlevel10k
+## EDGE浏览器中文设置
+```bash
+sudo nano /opt/microsoft/msedge/microsoft-edge
+export LANGUAGE=ZH-CN.UTF-8
+```
+## 安装ZSH和Powerlevel10k zsh-autosuggestions zsh-syntax-highlighting
 ```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 ## 安装GRUB主题
 ```bash
