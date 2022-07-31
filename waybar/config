@@ -1,5 +1,5 @@
 {
-    "height": 24,
+    "height": 27,
     "width": 1920,
     "modules-left": [
 	"custom/Arch",
@@ -69,7 +69,7 @@
 	},
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 12,
+        "icon-size": 15,
         "icon-theme": "Papirus-Dark-Custom",
         "tooltip-format": "{title}",
         "on-click": "minimize-raise",
