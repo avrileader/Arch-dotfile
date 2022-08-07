@@ -77,7 +77,6 @@
 	},
     "custom/Arch": {
         "format": "",
-        "tooltip": false,
-	"on-click": "wofi"
+        "tooltip": false
 	}
 }
