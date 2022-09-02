@@ -1,8 +1,9 @@
 # Archlinux 安装记录
 ## 格式化硬盘
+#### 最好格式化为msdos,否则os-prober不能正确检测到Windows引导
 ```bash
 mkfs.ext4 /dev/nvme0n1p2
-mkfs.vfat /dev/nvme0n1p1
+mkfs.msdos /dev/nvme0n1p1
 mount /dev/nvme0n1p2 /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
@@ -58,7 +59,13 @@ passwd avrileader
 ```bash
 pacman -S amd-ucode grub efibootmgr os-prober
 grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=Archlinux
+```
+#### 编辑`/etc/default/grub`文件，修改为`GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 nowatchdog"`，去掉 `GRUB_DISABLE_OS_PROBER=false`前面的 `#` 允许OS探测
+```bash
 nano /etc/default/grub
+```
+#### 生成 GRUB 配置文件
+```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ## 完成安装
@@ -72,7 +79,7 @@ reboot
 sudo nano /etc/pacman.conf
 wget https://arch.moichi.cn/res/yay-bin.pkg.tar.zst
 sudo pacman -U yay-bin.pkg.tar.zst
-sudo /etc/pacman.conf
+sudo nano /etc/pacman.conf
 [archlinuxcn]
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
@@ -80,7 +87,7 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```bash
 git clone https://aur.archlinux.org/wayfire-git.git
 ```
-修改 PKGBUILD `provides=("${pkgname%-git}" 'wlroots-git' 'wf-config-git' 'wlroots' 'wf-config' )`
+#### 修改 PKGBUILD `provides=("${pkgname%-git}" 'wlroots-git' 'wf-config-git' 'wlroots' 'wf-config' )`
 ```bash
 makepkg -si
 ```
@@ -108,3 +115,20 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```bash
 git clone https://github.com/vinceliuice/grub2-themes.git
 ```
+# 重建Archlinux引导
+## 格式化 EFI 分区，挂载分区
+```bash
+mkfs.msdos /dev/nvme0n1p1
+mount /dev/nvme0n1p2 /mnt
+mount /dev/nvme0n1p1 /mnt/boot
+```
+## 生成 /boot 目录下 `initramfs-linux-fallback.img` ` initramfs-linux.img` `vmlinuz-linux` `amd-ucode.img`文件
+```bash
+pacman -S linux amd-ucode
+```
+## 生成引导
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=Archlinux
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+## 若遇到 GRUB 启动前 `error：file'/grub/locale/C.gmo' not found`错误，在`/etc/default/grub`中添加`LANG=C`
