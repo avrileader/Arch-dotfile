@@ -115,20 +115,20 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```bash
 git clone https://github.com/vinceliuice/grub2-themes.git
 ```
-# 重建Archlinux引导
-## 格式化 EFI 分区，挂载分区
+## 重建Archlinux引导
+#### 格式化 EFI 分区，挂载分区
 ```bash
 mkfs.msdos /dev/nvme0n1p1
 mount /dev/nvme0n1p2 /mnt
 mount /dev/nvme0n1p1 /mnt/boot
 ```
-## 生成 /boot 目录下 `initramfs-linux-fallback.img` ` initramfs-linux.img` `vmlinuz-linux` `amd-ucode.img`文件
+#### 生成 /boot 目录下 `initramfs-linux-fallback.img` ` initramfs-linux.img` `vmlinuz-linux` `amd-ucode.img`文件
 ```bash
 pacman -S linux amd-ucode
 ```
-## 生成引导
+#### 生成引导
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=Archlinux
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
-## 若遇到 GRUB 启动前 `error：file'/grub/locale/C.gmo' not found`错误，在`/etc/default/grub`中添加`LANG=C`
+#### 若遇到 GRUB 启动前 `error：file'/grub/locale/C.gmo' not found`错误，在`/etc/default/grub`中添加`LANG=C`
