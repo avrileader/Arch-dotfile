@@ -1,69 +1,39 @@
-@define-color grey rgba(100, 100, 100, 1);
-@define-color yellow #00ccff;
-@define-color darkgrey rgba(10, 10, 10, 1);
-@define-color transparent rgba(0, 0, 0, 0);
-
-* {
-  border: none;
-}
-
 window {
-  background-color: @grey;
-  font-size: 1.5em;
-  /* font: {{ font }}; */
+margin: 0px;
+border: 1px solid #bd93f9;
+background-color: #282a36;
 }
 
 #input {
-  margin: 10px 10px 10px 10px;
-  border-bottom: 2px solid @yellow;
-  border-radius: 0px;
-  background-color: white;
+margin: 5px;
+border: none;
+color: #f8f8f2;
+background-color: #44475a;
 }
 
 #inner-box {
-  margin: 10px 10px 10px 10px;
-  border-top: 2px solid @transparent;
-  color: white;
-  background-color: @transparent;
-}
-
-#expander .entry {
-  margin-left: -10px;
-}
-
-#img {
-  margin: 5px 5px 5px 5px;
+margin: 5px;
+border: none;
+background-color: #282a36;
 }
 
 #outer-box {
-  margin: 0px;
-  border: 0px solid;
-  background-color: @transparent;
+margin: 0px;
+border: none;
+background-color: #282a36;
 }
 
 #scroll {
-  margin: 0px;
-  border: 0px solid;
-  background-color: @transparent;
+margin: 0px;
+border: none;
 }
 
-#entry{
-  padding: 1px;
-  padding-left: 4px;
-  padding-right: 4px;
-  margin: 0px;
-}
+#text {
+margin: 5px;
+border: none;
+color: #f8f8f2;
+} 
 
-#entry:selected{
-  background-color: @yellow;
-  color: @darkgrey;
-  outline: 0px;
-  border-radius: 0px;
-}
-
-#text:selected{
-  background-color: @yellow;
-  color: @darkgrey;
-  outline: 0px;
-  border-radius: 0px;
+#entry:selected {
+background-color: #44475a;
 }
